@@ -1,0 +1,15 @@
+<%= form_for(@micropost) do |f| %>
+  <%= render "shared/errors", resource: @micropost %>
+
+  <div class="form-group">
+    <%= f.label :content %><br>
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-default" %>
+  </div>
+<% end %>
