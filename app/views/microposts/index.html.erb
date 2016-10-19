@@ -18,7 +18,7 @@
         <% @microposts.each do |micropost| %>
           <tr>
             <td><%= micropost.content %></td>
-            <td><%= micropost.user_id %></td>
+            <td><%= micropost.user.name %></td>
             <td><%= link_to 'Show', micropost, class: "btn btn-default" %></td>
             <td><%= link_to 'Edit', edit_micropost_path(micropost), class: "btn btn-primary" %></td>
             <td><%= link_to 'Destroy', micropost, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
