@@ -1,5 +1,33 @@
-<h1>New User</h1>
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+		<div class="jumbotron">
+			<h1 class="text-center">Sign up to Tweeter!</h1>
 
-<%= render 'form' %>
+			<%= form_for(@user) do |f| %>
+			  <%= render "shared/errors", resource: @user %>
 
-<%= link_to 'Back', users_path %>
+			  <div class="form-group">
+			    <%= f.label :name %><br>
+			    <%= f.text_field :name, class: "form-control" %>
+			  </div>
+			  <div class="form-group">
+			    <%= f.label :email %><br>
+			    <%= f.text_field :email, class: "form-control" %>
+			  </div>
+			  <div class="form-group">
+			    <%= f.label :password %><br>
+			    <%= f.password_field :password, class: "form-control" %>
+			  </div>
+			  <div class="form-group">
+			    <%= f.label :password_confirmation %><br>
+			    <%= f.password_field :password_confirmation, class: "form-control" %>
+			  </div>
+			  <div class="actions">
+			    <%= f.submit "Create my account!", class: "btn btn-primary btn-lg" %>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-sm-2"></div>
+</div>

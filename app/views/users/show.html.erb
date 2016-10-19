@@ -1,31 +1,47 @@
 <%= render "shared/notice" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="row">
+	<div class="col-sm-2"></div>
+	<div class="col-sm-8">
+		<div class="row">
+			<div class="col-sm-4">
+				<%= gravatar_for @user %>
+				<span><%= @user.name %></span>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+				<div class="row stats">
+					<div class="col-sm-6">
+						<p>
+							50
+							<br>
+							following
+						</p>
+					</div>
 
-<h1>Microposts</h1>
+					<div class="col-sm-6">
+						<p>
+							77
+							<br>
+							followers
+						</p>
+					</div>
+				</div>
+			</div>
 
-<table class="table table-striped">
-	<thead>
-		<th>Date</th>
-		<th>Content</th>
-	</thead>
-	<tbody>
-		<% @user.microposts.each do |micropost| %>
-			<tr>
-				<td><%= micropost.created_at %></td>
-				<td><%= micropost.content %></td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+			<div class="col-sm-8">
+				<h1>Microposts (<%= @user.microposts.count %>)</h1>
+				<hr>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+				<ul class="microposts">
+					<% @user.microposts.each do |micropost| %>
+						<li>
+							<h4><%= micropost.content %></h4>
+							<i><%= time_ago_in_words(micropost.created_at) %> ago</i>
+							<hr>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-2"></div>
+</div>
