@@ -23,21 +23,36 @@
 						</p>
 					</div>
 				</div>
+
+				<div class="row micropost">
+					<div class="col-sm-12">
+						<%= form_for(@micropost) do |f| %>
+							<%= f.text_area :content %>
+							<%= f.submit "Post", class: "btn btn-lg btn-primary btn-block" %>
+						<% end %>
+
+					</div>
+				</div>
 			</div>
 
 			<div class="col-sm-8">
-				<h1>Microposts (<%= @user.microposts.count %>)</h1>
-				<hr>
+				<% if @microposts.any? %>
+					<h1>Microposts (<%= @microposts.count %>)</h1>
+					<hr>
 
-				<ul class="microposts">
-					<% @user.microposts.each do |micropost| %>
-						<li>
-							<h4><%= micropost.content %></h4>
-							<i><%= time_ago_in_words(micropost.created_at) %> ago</i>
-							<hr>
-						</li>
-					<% end %>
-				</ul>
+					<ul class="microposts">
+						<% @microposts.each do |micropost| %>
+							<li>
+								<h4><%= micropost.content %></h4>
+								<i class="timestamp"><%= time_ago_in_words(micropost.created_at) %> ago</i>
+								<hr>
+							</li>
+						<% end %>
+					</ul>
+
+					<%= will_paginate @microposts %>
+				<% else %>
+				<% end %>
 			</div>
 		</div>
 	</div>

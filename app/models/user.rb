@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+	default_scope -> { order('name ASC') }
+
 	validates :name, presence: true
 	validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
 	validates :password, length: { minimum: 6 }

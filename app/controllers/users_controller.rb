@@ -7,11 +7,13 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.order(:name).paginate(page: params[:page])
+    @users = User.paginate(page: params[:page])
   end
 
   # GET /users/1
   def show
+    @microposts = @user.microposts.paginate(page: params[:page])
+    @micropost = @user.microposts.new
   end
 
   # GET /users/new

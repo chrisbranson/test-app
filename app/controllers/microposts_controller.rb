@@ -8,16 +8,6 @@ class MicropostsController < ApplicationController
     @microposts = Micropost.all
   end
 
-  # GET /microposts/1
-  # GET /microposts/1.json
-  def show
-  end
-
-  # GET /microposts/new
-  def new
-    @micropost = Micropost.new
-  end
-
   # GET /microposts/1/edit
   def edit
   end
@@ -25,17 +15,15 @@ class MicropostsController < ApplicationController
   # POST /microposts
   # POST /microposts.json
   def create
-    @micropost = Micropost.new(micropost_params)
+    @micropost = current_user.microposts.build(micropost_params)
 
-    respond_to do |format|
-      if @micropost.save
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
-        format.json { render :show, status: :created, location: @micropost }
-      else
-        format.html { render :new }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
-      end
+    if @micropost.save
+      flash[:success] = "Micropost created!"
+    else
+      flash[:error] = "Failed to create Micropost!"
     end
+
+    redirect_to user_path(current_user)
   end
 
   # PATCH/PUT /microposts/1
