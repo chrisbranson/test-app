@@ -83,6 +83,9 @@ class UsersController < ApplicationController
 
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
+      if !current_user?(@user)
+        flash[:error] = "You are not authorised to do that!"
+        redirect_to(root_url)
+      end
     end
 end
