@@ -1,1 +1,17 @@
-<h1>Hello <%= @username %></h1>
+<% if signed_in? %>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
+			<div class="row">
+				<div class="col-sm-4">
+					<%= render 'users/profile' %>
+				</div>
+
+				<div class="col-sm-8">
+					<%= render 'users/feed' %>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+<% end %>

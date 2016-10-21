@@ -1,0 +1,29 @@
+<%= gravatar_for @user, size: 90 %>
+<span><%= @user.name %></span>
+
+<div class="row stats">
+	<div class="col-sm-6">
+		<p>
+			50
+			<br>
+			following
+		</p>
+	</div>
+
+	<div class="col-sm-6">
+		<p>
+			77
+			<br>
+			followers
+		</p>
+	</div>
+</div>
+
+<div class="row micropost">
+	<div class="col-sm-12">
+		<%= form_for(@micropost) do |f| %>
+			<%= f.text_area :content, rows: 6 %>
+			<%= f.submit "Post", class: "btn btn-lg btn-primary btn-block" %>
+		<% end %>
+	</div>
+</div>
