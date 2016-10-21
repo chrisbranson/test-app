@@ -2,11 +2,6 @@ class MicropostsController < ApplicationController
   before_action :signed_in_user, only: [:new, :create, :destroy]
   before_action :set_micropost, only: [:destroy]
 
-  # GET /microposts
-  def index
-    @microposts = Micropost.all
-  end
-
   # POST /microposts
   def create
     @micropost = current_user.microposts.build(micropost_params)
