@@ -1,5 +1,5 @@
 <% if @microposts.any? %>
-	<h1>Microposts (<%= @microposts.count %>)</h1>
+	<h1><%= @feed_title %></h1>
 
 	<ul class="microposts">
 		<% @microposts.each do |micropost| %>

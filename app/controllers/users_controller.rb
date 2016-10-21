@@ -14,6 +14,9 @@ class UsersController < ApplicationController
   def show
     @microposts = @user.microposts.paginate(page: params[:page])
     @micropost = @user.microposts.new
+
+    # set the feed title
+    @feed_title = "Your Microposts (#{@microposts.count})"
   end
 
   # GET /users/new

@@ -7,6 +7,8 @@ class WelcomeController < ApplicationController
 			@micropost = current_user.microposts.build
 			# get the current user's micropost feed
 			@microposts = current_user.feed.paginate(page: params[:page])
+			# set the feed title
+			@feed_title = "Your feed (#{@microposts.count})"
 		end
 	end
 end
